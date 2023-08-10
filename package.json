@@ -1,0 +1,13 @@
+{
+  "dependencies": {
+    "playwright": "^1.36.2"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.36.2"
+  },
+  "scripts": {
+    "headless": "npx playwright test",
+    "headed": "npx playwright test --headed",
+    "report": "  npx playwright show-report"
+  }
+}
