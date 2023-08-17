@@ -58,8 +58,32 @@ test('All cards', async ({page}) => {
   await password.fill('learning')
   await signInBtn.click()
 //   console.log(await page.locator('.card-body a').nth(1).textContent())
-console.log(await page.locator('.card-body a').first().textContent())
-  const allCards = page.locator('.card-body a')
+// console.log(await page.locator('.card-body a').first().textContent())
+
+const allCards = page.locator('.card-body a')
+  const titleArr = await allCards.allTextContents()
+  console.log(titleArr)
+  expect(titleArr.length).toBeGreaterThan(0)
+})
+
+test('All Promises', async ({page}) => {
+  await page.goto('https://www.rahulshettyacademy.com/loginpagePractise/')
+  const userName = page.locator('#username')
+  const password = page.locator('[type = "password"]')
+  const signInBtn = page.locator('#signInBtn')
+  
+  await userName.type('rahulshettyacademy')
+  await password.fill('learning')
+
+
+  await Promise.all(
+    [
+      page.waitForNavigation(),
+      signInBtn.click(),
+
+    ]
+  )
+const allCards = page.locator('.card-body a')
   const titleArr = await allCards.allTextContents()
   console.log(titleArr)
   expect(titleArr.length).toBeGreaterThan(0)
