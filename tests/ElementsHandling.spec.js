@@ -33,7 +33,7 @@ test.describe('UI Controls',  () => {
 
     })
 
-    test.only('New window handling', async({browser}) => {
+    test('New window handling', async({browser}) => {
         
         const context = await browser.newContext()
         const  page = await context.newPage()
